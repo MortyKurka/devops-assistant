@@ -1,0 +1,62 @@
+#!/bin/bash
+
+name=$1
+
+gi="# Общие
+*.DS_Store
+*.user
+*.userosscache
+*.sln.docstates
+
+# Файлы сборки
+/bin/
+/obj/
+/packages/
+*.exe
+*.dll
+*.so
+*.dylib
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# Visual Studio
+.vs/
+*.suo
+*.userprefs
+*.sln.ide
+*.csproj.user
+*.vbproj.user
+*.fsproj.user
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+**/Properties/launchSettings.json
+
+# Rider
+.idea/
+*.sln.iml
+
+# Пользовательские настройки
+/.fakes
+/secrets.json
+/appsettings.Development.json
+/appsettings.Local.json
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.temp
+*.cache"
+
+mkdir -p "$name"/{src,tests,docs,scripts}
+cd "$name"
+touch .gitignore
+touch README.md
+echo "Новый  проект "$name"" > README.md
+echo "$gi" > .gitignore
+git init
+git branch -M main
+
