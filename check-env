@@ -1,0 +1,23 @@
+#!/bin/bash
+
+soft=(
+    "git" 1
+    "docker" 4
+    "dotnet" 5
+    "curl" 2
+    "python" 142
+    
+)
+
+soft_length=${#soft[@]}
+
+for ((i=0; i<soft_length; i+=2))
+do
+    tput setaf ${soft[i+1]}
+    if command -v "${soft[$i]}" &> /dev/null ; then
+        "${soft[$i]}" --version
+    else
+        echo "${soft[$i]} не установлен"
+    fi
+    tput sgr0
+done
